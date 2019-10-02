@@ -40,6 +40,8 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
+
+  # ユーザー認証(ログイン)をnameで行うという意味
   config.authentication_keys = [:name]
 
   # Configure parameters from the request object used for authentication. Each entry
@@ -52,11 +54,16 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
+
+  # emailの大文字と小文字を区別しないという意味
+  # メールアドレスを大文字で登録しても、パラメーターには小文字で入っている
   config.case_insensitive_keys = [:email]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
+
+  # emailの空白をなくすという意味?
   config.strip_whitespace_keys = [:email]
 
   # Tell if authentication through request.params is enabled. True by default.

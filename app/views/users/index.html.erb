@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
+
     <div class="col-md-3">
       <%= render 'books/list', user: current_user, book: @book_new %>
     </div>
+
     <div class="col-md-9">
 
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
-
 
         <thead>
           <tr>
@@ -18,22 +19,20 @@
         </thead>
 
         <tbody>
-        <% @users.each do |user| %>
-
-          <tr>
-            <td>
-              <%=  attachment_image_tag user, :profile_image, format:"jpeg",fallback:"no_image.jpg", size:"40x40" %>
-            </td>
-            <td>
-              <%= user.name %>
-            </td>
-            <td>
-              <%= link_to 'Show', user_path(user) %>
-            </td>
-          </tr>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%=  attachment_image_tag user, :profile_image, format:"jpeg",fallback:"no_image.jpg", size:"40x40" %>
+              </td>
+              <td>
+                <%= user.name %>
+              </td>
+              <td>
+                <%= link_to 'Show', user_path(user) %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
-
-        <% end %>
 
       </table>
     </div>

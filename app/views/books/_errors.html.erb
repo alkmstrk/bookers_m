@@ -1,0 +1,10 @@
+<% if var.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <h4><%= var.errors.count %>件のエラーが発生しました。</h4>
+    <ul>
+       <% var.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+ <% end %>

@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   before_action :signin_user_check
 
-# コントローラーにtopアクションがなくてもrailsが予測してtop.html.erbを返してくれる
+  # アクションが記述されていなくても、railsはアクション名と同じビューファイルを探して、レスポンスとしてビューを返してくれる
   # def top
   # end
 
@@ -10,10 +10,13 @@ class HomeController < ApplicationController
   # end
 
   private
-  # ログインしているユーザーは入れないように
-  def signin_user_check
-    if user_signed_in?
-      redirect_to user_path(current_user)
-    end
-  end
+
+	  def signin_user_check
+	  	if user_signed_in?
+	    	redirect_to user_path(current_user)
+	    end
+	    # ↑と同義。このくらいのif分なら1行でまとめるのも良いかもしれない
+	    # redirect_to user_path(current_user) if user_signed_in?
+	  end
+
 end
