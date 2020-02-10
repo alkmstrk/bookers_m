@@ -1,6 +1,12 @@
 class ApplicationRecord < ActiveRecord::Base
-	# Rails はそのクラス名に対応したデータベースのテーブルを自動的に探そうとする。Bookモデルならbooksテーブルを探す。
-	# self.abstract_class = trueと書いていないと、application_recordsテーブルをさがしてしまう。
-	# ↓は最初から記述されている
-  self.abstract_class = true
+	self.abstract_class = true
+
+	def self.search(search, user_or_book)
+		if user_or_book == "1" && search != ""
+			Book.where(['title LIKE ?', "%#{search}%"])
+		elsif user_or_book == "2" && search != ""
+			User.where(['name LIKE ?', "%#{search}%"])
+    end
+	end
+	
 end

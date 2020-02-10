@@ -19,6 +19,45 @@
   </tbody>
 </table>
 
+<table class="table">
+  <tbody>
+    <tr>
+      <th>
+        <%= link_to following_path(user) do %>
+            <%= user.following_user.count %>フォロー
+        <% end %>
+      </th>
+      <th>
+        <%= link_to followers_path(user) do %>
+          <%= user.follower_user.count %>フォロワー
+        <% end %>
+      </th>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>
+        <% if user == current_user %>
+        <% elsif current_user.following?(user) %>
+          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST, class: "btn btn-large btn-primary", remote: true %>
+        <% else %>
+          <%= link_to 'フォローする', follow_path(user.id), method: :POST, class: "btn btn-large btn-primary", remote: true %>
+        <% end %>
+      </th>
+    </tr>
+  </tbody>
+</table>
+
+<div class = "row">
+  <% if user == current_user %>
+  <% else %>
+    <%= link_to 'DMを送る', dm_create_path(user.id), class: "col-xs-12 btn btn-large btn-primary" %>
+  <% end %>
+</div>
+
 <div class = "row">
   <%= link_to "", edit_user_path(user), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"  %>
 </div>

@@ -1,0 +1,10 @@
+<%# コメント数の切り替えを行うため、投稿部分も切り替え %>
+$(".book_<%= @book.id %>").html("<%= j(render 'books/post', book: @book ) %>");
+<%# フォームを空にしておく %>
+$('#comment_comment').val('');
+<%# trタグを追加 %>
+$('#come_new').before('<tr class="comment_<%= @comment.id %>"></tr>');
+<%# 追加したtrタグに部分テンプレートを呼び出す %>
+$(".comment_<%= @comment.id %>").html("<%= j(render 'books/comment', comment: @comment ) %>");
+
+

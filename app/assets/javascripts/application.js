@@ -15,3 +15,12 @@
   //= require jquery
   //= require bootstrap-sprockets
   //= require_tree .
+          
+  $(function(){
+    $(document).on('click', '#come', function(){
+      if ($('#comment_comment').val() == '') {
+        alert("コメントを入力してください");
+        return false;
+      }
+    });
+  });

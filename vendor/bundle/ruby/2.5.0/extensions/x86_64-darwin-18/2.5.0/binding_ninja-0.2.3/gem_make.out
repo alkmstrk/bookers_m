@@ -1,0 +1,19 @@
+current directory: /Users/kajitaniryuunosuke/Desktop/Bookers2_m/vendor/bundle/ruby/2.5.0/gems/binding_ninja-0.2.3/ext/binding_ninja
+/Users/kajitaniryuunosuke/.rvm/rubies/ruby-2.5.5/bin/ruby -r ./siteconf20191211-63584-1yix2uz.rb extconf.rb
+creating Makefile
+
+current directory: /Users/kajitaniryuunosuke/Desktop/Bookers2_m/vendor/bundle/ruby/2.5.0/gems/binding_ninja-0.2.3/ext/binding_ninja
+make "DESTDIR=" clean
+
+current directory: /Users/kajitaniryuunosuke/Desktop/Bookers2_m/vendor/bundle/ruby/2.5.0/gems/binding_ninja-0.2.3/ext/binding_ninja
+make "DESTDIR="
+compiling binding_ninja.c
+binding_ninja.c:77:21: warning: unused variable 'ext_mod' [-Wunused-variable]
+  VALUE method_sym, ext_mod, options, binding, args_ary, cond;
+                    ^
+1 warning generated.
+linking shared-object binding_ninja/binding_ninja.bundle
+
+current directory: /Users/kajitaniryuunosuke/Desktop/Bookers2_m/vendor/bundle/ruby/2.5.0/gems/binding_ninja-0.2.3/ext/binding_ninja
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 binding_ninja.bundle ./.gem.20191211-63584-16806tk/binding_ninja

@@ -1,16 +1,25 @@
 Rails.application.routes.draw do
+  get 'search/index' => 'search#index', as: 'search'
   root 'home#top'
   get 'home/about' => 'home#about'
 
-  # デバイスのルートを上に書く
+  get 'users/mail' => 'users#mail', as: 'mail'
+  get 'rooms/users/:id' => "rooms#dm_create", as: 'dm_create'
+  get 'rooms/:id' => 'rooms#show', as: 'room'
+
   devise_for :users
 
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+  resources :books do
+    resource :favorites, only: [:create, :destroy]
+    resource :comments, only: [:create, :destroy]
   end
+  resources :users, only: [:index,:show, :edit, :update]
 
+  post 'follow/:id' => 'relationships#follow', as: 'follow'
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
 
-  resources :books, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  resources :users, only: [:index, :show, :edit, :update]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'users/:id/following' => 'users#following', as: 'following'
+  get 'users/:id/follow' => 'users#followers', as: 'followers'
+
+  get 'users/:id/welcome' => 'users#welcome'
 end

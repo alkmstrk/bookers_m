@@ -1,0 +1,4 @@
+<%# 削除したら''すなわち空にする %>
+$('.comment_<%= @comment_id %>').html('');
+<%# コメント数の切り替え %>
+$(".book_<%= @book.id %>").html("<%= j(render 'books/post', book: @book ) %>");

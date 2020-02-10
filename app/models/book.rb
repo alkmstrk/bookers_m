@@ -1,14 +1,13 @@
 class Book < ApplicationRecord
+   belongs_to :user
+   has_many :favorites, dependent: :destroy
+   has_many :comments, dependent: :destroy
+ 
+   validates :title, length: { minimum: 1 }
+   validates :body, length: { in: 1..200 }
 
- # Bookモデルを経由して、Userモデルの情報を取ってきている
-  belongs_to :user
+   def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+   end
 
-	#これでも正常に動く(〇〇.userが使える)。アソシエーションを宣言することで、このメソッドも追加される。
-	#selfは呼び出し元の〇〇.userの〇〇にあたる。book.userならbook。selfは,そのクラスのインスタンス変数の参照に利用される。
-  # def user
-  # 	User.find(self.user_id)
-  # end
-
-  validates :title, length: { minimum: 1 }
-  validates :body, length: { in: 1..200 }
-end
+ end
